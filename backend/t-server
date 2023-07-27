@@ -1,0 +1,15 @@
+// const express = require('express');
+// const cors = require('cors');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+// const port = 5000;
+
+// app.post('/register', (req, res) => {
+//   const { username, password } = req.body;
+//   res.json({ requestData: { username, password } });
+// });
+// app.listen(port, () => console.log(`serve at localhost:${port}!`));
+
+// mongodb+srv://mern-blog-user:mern-blog-user@myblog.obdi4n0.mongodb.net/?retryWrites=true&w=majority
