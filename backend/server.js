@@ -57,6 +57,7 @@ app.get('/profile', (req, res) => {
   });
 });
 
+// user logout
 app.post('/logout', (req, res) => {
   res.cookie('token', '').json('ok');
 });
