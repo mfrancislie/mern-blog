@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./model/User');
-const PostModel = require('./model/Post');
+const Post = require('./model/Post');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -14,6 +14,9 @@ const app = express();
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(cookieParser());
+// to show image from directory
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 
@@ -86,6 +89,15 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
     });
     res.json(postDoc);
   });
+});
+
+app.get('/post', async (req, res) => {
+  res.json(
+    await Post.find()
+      .populate('author', ['username'])
+      .sort({ createdAt: -1 })
+      .limit(20)
+  );
 });
 
 const port = 5000;
