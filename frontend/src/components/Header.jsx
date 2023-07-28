@@ -23,7 +23,7 @@ const Header = () => {
     setUserInfo(null);
   };
 
-  const username = userInfo.username;
+  const username = userInfo?.username;
   return (
     <header>
       <NavLink to="/" className="logo">
@@ -32,7 +32,7 @@ const Header = () => {
       <nav>
         {username && (
           <>
-            <NavLink to="/">Create Post</NavLink>
+            <NavLink to="/create">Create Post</NavLink>
             <a href="/" onClick={logout}>
               Logout ({username})
             </a>
